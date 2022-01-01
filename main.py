@@ -79,33 +79,26 @@ class MainWindow(QMainWindow):
         self.ui.comboBox.setCurrentIndex(0)
 
     def call_draw_bt(self):
-        tmp_flag = True
         msgtext = ""
-
         log_file = self.ui.logEdit.text().strip()
         period_time = self.ui.periodEdit.text().strip()
         buffer_time = self.ui.bufferEdit.text().strip()
         alsa_node = self.ui.comboBox.currentText().strip()
 
         if not os.path.exists(log_file):
-            tmp_flag = False
             msgtext = "No log file be selected"
         elif not alsa_node:
-            tmp_flag = False
             msgtext = "No alsa node be selected"
         elif not period_time:
-            tmp_flag = False
             msgtext = "No period time be found"
         elif not buffer_time:
-            tmp_flag = False
             msgtext = "No buffer time be found"
-        if not tmp_flag:
+        if msgtext:
             self.log.warning(msgtext)
             self.msgbox.warning(self, "Warning", msgtext)
             return False
 
         self.draw_dict.clear()
-        self.draw_dict["en_img"] = False
         self.draw_dict["log_file"] = log_file
         self.draw_dict["alsa_node"] = alsa_node
         try:
@@ -124,6 +117,7 @@ class MainWindow(QMainWindow):
         all_log_list = []
         target_log_list = []
         data_dict = {}
+
         try:
             with open(self.draw_dict["log_file"], mode='r', encoding="utf-8", errors="ignore") as fp:
                 all_log_list = fp.readlines()
