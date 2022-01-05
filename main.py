@@ -6,10 +6,12 @@ import subprocess
 from log import Log
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtCore import Slot
-from ui_mainwindow import Ui_MainWindow
+from PySide6.QtGui import QIcon, QPixmap
+from ui.ui_mainwindow import Ui_MainWindow
 from plotly.offline import plot
 import plotly.graph_objects as go
-from global_var import Gui_Info, About_Info
+import global_var as gl
+import resrc.resource as res
 
 
 class MainWindow(QMainWindow):
@@ -22,7 +24,9 @@ class MainWindow(QMainWindow):
         self.init_var()
 
     def gui_setup(self):
-        self.setWindowTitle(f'{Gui_Info["proj"]} {Gui_Info["version"]}')
+        self.setWindowTitle(f'{gl.Gui_Info["proj"]} {gl.Gui_Info["version"]}')
+        adtm_icon = QIcon(QPixmap(":/icon/adtm_icon"))
+        self.setWindowIcon(adtm_icon)
         self.dialog = QFileDialog()
         self.msgbox = QMessageBox()
         self.ui.periodEdit.setText("8")
@@ -162,12 +166,12 @@ class MainWindow(QMainWindow):
         sys.exit()
 
     def action_open_log(self):
-        os.makedirs(Gui_Info["dbg_dir"], mode=0o777, exist_ok=True)
-        subprocess.Popen(f'start {Gui_Info["dbg_dir"]}', shell=True)
-        # os.system("start %s" % Gui_Info["debug_dir"])
+        os.makedirs(gl.Gui_Info["dbg_dir"], mode=0o777, exist_ok=True)
+        subprocess.Popen(f'start {gl.Gui_Info["dbg_dir"]}', shell=True)
+        # os.system("start %s" % gl.Gui_Info["debug_dir"])
 
     def action_about(self):
-        self.msgbox.information(self, "About", About_Info)
+        self.msgbox.information(self, "About", gl.About_Info)
 
 
 if __name__ == "__main__":

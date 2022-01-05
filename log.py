@@ -1,15 +1,15 @@
 import os
 import time
 import logging
-from global_var import Gui_Info
+import global_var as gl
 
 
 class Log:
     def __init__(self):
-        if not os.path.exists(Gui_Info["dbg_dir"]):
-            os.makedirs(Gui_Info["dbg_dir"], exist_ok=True)
+        if not os.path.exists(gl.Gui_Info["dbg_dir"]):
+            os.makedirs(gl.Gui_Info["dbg_dir"], exist_ok=True)
         self.now = time.strftime("%Y-%m-%d--%H-%M-%S")
-        self.logname = os.path.join(Gui_Info["dbg_dir"], '{0}.log'.format(self.now))
+        self.logname = os.path.join(gl.Gui_Info["dbg_dir"], f'{self.now}.log')
 
     def __printconsole(self, level, message):
         # 创建一个logger
