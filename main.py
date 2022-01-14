@@ -5,7 +5,6 @@ import threading
 import subprocess
 from log import Log
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from PySide6.QtCore import Slot
 from PySide6.QtGui import QIcon, QPixmap
 from ui.ui_mainwindow import Ui_MainWindow
 from plotly.offline import plot
@@ -47,7 +46,6 @@ class MainWindow(QMainWindow):
         self.max_pattern = re.compile(r"inverval_max:(\d+) ms")        # inverval_max:11 ms
         self.alsanode_pattern = re.compile(r"alsa node\((.*)\) adtm")  # alsa node(pcmMicRefIn_c) adtm
 
-    @Slot()
     def call_select_bt(self):
         all_log_list = []
         alsanode_list = []
