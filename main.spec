@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['E:\\Project\\git_proj\\ADTM_Tool'],
+             pathex=[],
              binaries=[],
              datas=[],
              hiddenimports=[],
