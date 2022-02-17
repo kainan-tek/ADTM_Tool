@@ -3,15 +3,15 @@
 
 ## Dependencies:
 python v3.10.2  
-pyside6==6.2.2.1  
+pyside6==6.2.3  
 plotly==5.5.0  
 pyinstaller==4.8 (optional)    
 notice: pyinstaller is used for packing the python script file(\*.py) to executable file(\*.exe).  
 
 ## Dependencies install cmd:
 ```C
-pip install pyside6==6.2.2.1
-// install with specified source
+pip install pyside6==6.2.3
+// install with specified source path
 pip install plotly==5.5.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 // install all 
 pip install requirements.txt
