@@ -142,9 +142,9 @@ class MainWindow(QMainWindow):
             del actual_time_list[:5]
             del actual_time_list[-5:]
         # print(actual_time_list)
-        data_dict["x"] = [i for i in range(len(actual_time_list))]
-        data_dict["y1"] = [self.draw_dict["period_time"] for item in actual_time_list]
-        data_dict["y2"] = [self.draw_dict["buffer_time"] for item in actual_time_list]
+        data_dict["x"] = list(range(0, len(actual_time_list), 1))
+        data_dict["y1"] = [self.draw_dict["period_time"]] * len(actual_time_list)
+        data_dict["y2"] = [self.draw_dict["buffer_time"]] * len(actual_time_list)
         data_dict["y3"] = actual_time_list
 
         trace_period = go.Scatter(x=data_dict["x"], y=data_dict["y1"], name="period_time",
