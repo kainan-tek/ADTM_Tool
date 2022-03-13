@@ -6,10 +6,15 @@ import global_var as gl
 
 class Log:
     def __init__(self):
-        if not os.path.exists(gl.Gui_Info["dbg_dir"]):
-            os.makedirs(gl.Gui_Info["dbg_dir"], exist_ok=True)
-        self.now = time.strftime("%Y-%m-%d--%H-%M-%S")
-        self.logname = os.path.join(gl.Gui_Info["dbg_dir"], f'{self.now}.log')
+        if "nt" in os.name:
+            dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
+        else:
+            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.Gui_Info["dbg_reldir"])
+        if not os.path.exists(dbg_dirname):
+            os.makedirs(dbg_dirname, exist_ok=True)
+
+        time_now = time.strftime("%Y-%m-%d--%H-%M-%S")
+        self.logname = os.path.normpath(os.path.join(dbg_dirname, f'{time_now}.log'))
 
     def __printconsole(self, level, message):
         # 创建一个logger

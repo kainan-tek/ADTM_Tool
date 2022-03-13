@@ -158,15 +158,20 @@ class MainWindow(QMainWindow):
             title='unit: second'), yaxis=dict(title='unit: ms'), legend=dict(font_size=16))
 
         fig = go.Figure(data=_data, layout=_layout)
-        plot(fig, filename=f'adtm_test_{self.draw_dict["alsa_node"]}.html')
+        if "nt" in os.name:
+            plot(fig, filename=f'adtm_test_{self.draw_dict["alsa_node"]}.html')
+        else:
+            fig.show()
 
     def action_exit(self):
         sys.exit()
 
     def action_open_log(self):
-        os.makedirs(gl.Gui_Info["dbg_dir"], mode=0o777, exist_ok=True)
-        subprocess.Popen(f'start {gl.Gui_Info["dbg_dir"]}', shell=True)
-        # os.system("start %s" % gl.Gui_Info["debug_dir"])
+        if "nt" in os.name:
+            dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
+            subprocess.Popen(f'start {dbg_dirname}', shell=True)
+        else:
+            self.log.info("Can't open in this os platform.")
 
     def action_about(self):
         self.msgbox.information(self, "About", gl.About_Info)

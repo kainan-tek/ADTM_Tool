@@ -1,5 +1,8 @@
 ﻿Release Note:
 
+v1.0.1:
+    support for Ubuntu platform.
+
 v1.0.0:
     Initial version with Pyside6.
 
