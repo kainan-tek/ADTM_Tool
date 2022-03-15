@@ -158,10 +158,7 @@ class MainWindow(QMainWindow):
             title='unit: second'), yaxis=dict(title='unit: ms'), legend=dict(font_size=16))
 
         fig = go.Figure(data=_data, layout=_layout)
-        if "nt" in os.name:
-            plot(fig, filename=f'adtm_test_{self.draw_dict["alsa_node"]}.html')
-        else:
-            fig.show()
+        plot(fig, filename=f'adtm_test_{self.draw_dict["alsa_node"]}.html')
 
     def action_exit(self):
         sys.exit()
@@ -169,9 +166,10 @@ class MainWindow(QMainWindow):
     def action_open_log(self):
         if "nt" in os.name:
             dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
-            subprocess.Popen(f'start {dbg_dirname}', shell=True)
+            os.startfile(dbg_dirname)
         else:
-            self.log.info("Can't open in this os platform.")
+            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.Gui_Info["dbg_reldir"])
+            os.system('xdg-open "%s"' % dbg_dirname)
 
     def action_about(self):
         self.msgbox.information(self, "About", gl.About_Info)
