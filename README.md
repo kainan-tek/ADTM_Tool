@@ -11,8 +11,8 @@ notice: pyinstaller is used for packing the python script file(\*.py) to executa
 ## Dependencies install cmd:
 ```C
 // install package with specified aliyun source path
-pip install pyside6==6.2.4 -i -i https://mirrors.aliyun.com/pypi/simple
-pip install plotly==5.6.0 -i -i https://mirrors.aliyun.com/pypi/simple
+pip install pyside6==6.2.4 -i https://mirrors.aliyun.com/pypi/simple
+pip install plotly==5.6.0 -i https://mirrors.aliyun.com/pypi/simple
 // or install all 
 pip install requirements.txt
 ```
