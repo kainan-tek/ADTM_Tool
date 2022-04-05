@@ -2,15 +2,14 @@ import os
 import sys
 import re
 import threading
-import subprocess
 from log import Log
+import global_var as gl
+import resrc.resource as res
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
 from ui.ui_mainwindow import Ui_MainWindow
 from plotly.offline import plot
-import plotly.graph_objects as go
-import global_var as gl
-import resrc.resource as res
+from plotly import graph_objects as go
 
 
 class MainWindow(QMainWindow):
@@ -166,10 +165,12 @@ class MainWindow(QMainWindow):
     def action_open_log(self):
         if "nt" in os.name:
             dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
+            # subprocess.Popen(f'explorer.exe {dbg_dirname}', close_fds=True)
             os.startfile(dbg_dirname)
         else:
             dbg_dirname = os.path.join(os.path.expanduser('~'), gl.Gui_Info["dbg_reldir"])
-            os.system('xdg-open "%s"' % dbg_dirname)
+            # subprocess.Popen(f'xdg-open {dbg_dirname}', close_fds=True)
+            os.system(f'xdg-open {dbg_dirname}')
 
     def action_about(self):
         self.msgbox.information(self, "About", gl.About_Info)
