@@ -30815,4 +30815,3 @@
 09-07 14:31:39.244   512 13241 I chatty  : uid=1041(audioserver) reader identical 7 lines
 09-07 14:31:39.274   512 13241 D HarmanHAL: StreamIn::getCapturePositionImpl
 09-07 14:31:39.280   512  3972 I HarmanHal.Routing: hacs alsa node(pcmMedia_p) adtm interval_min:0 ms, inverval_max:11 ms, inverval_mean:8 ms!
-                                  

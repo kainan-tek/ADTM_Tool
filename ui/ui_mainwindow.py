@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.3
+## Created by: Qt User Interface Compiler version 6.3.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,6 +25,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
+        MainWindow.setWindowModality(Qt.WindowModal)
+        MainWindow.setEnabled(True)
         MainWindow.resize(520, 280)
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -49,6 +51,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setEnabled(True)
         self.tabWidget.setGeometry(QRect(0, 0, 521, 241))
         font1 = QFont()
         font1.setPointSize(10)
@@ -66,6 +69,7 @@ class Ui_MainWindow(object):
         self.label.setFont(font2)
         self.logEdit = QLineEdit(self.MainTab)
         self.logEdit.setObjectName(u"logEdit")
+        self.logEdit.setEnabled(True)
         self.logEdit.setGeometry(QRect(70, 20, 331, 31))
         self.logEdit.setFont(font2)
         self.logEdit.setReadOnly(True)
@@ -105,6 +109,7 @@ class Ui_MainWindow(object):
         self.drawButton.setFont(font2)
         self.comboBox = QComboBox(self.MainTab)
         self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setEnabled(True)
         self.comboBox.setGeometry(QRect(90, 160, 311, 31))
         self.comboBox.setFont(font2)
         self.tabWidget.addTab(self.MainTab, "")

@@ -1,5 +1,5 @@
 Gui_Info = {"proj": "ADTM Tool",
-            "version": " v1.0.1",
+            "version": " v1.1.0",
             "email": "kainanos@outlook.com",
             "normal_size": [500, 250],
             "win_tmp": "C:/tmp",

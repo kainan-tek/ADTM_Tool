@@ -1,4 +1,7 @@
-﻿Release Note:
+Release Note:
+
+v1.1.0:
+    Based on pyside6 v6.3.0.
 
 v1.0.1:
     support for Ubuntu platform.
