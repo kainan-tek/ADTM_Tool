@@ -7,9 +7,9 @@ import global_var as gl
 class Log:
     def __init__(self):
         if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
+            dbg_dirname = os.path.normpath(os.path.join(gl.GuiInfo["win_tmp"], gl.GuiInfo["dbg_reldir"]))
         else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.Gui_Info["dbg_reldir"])
+            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.GuiInfo["dbg_reldir"])
         if not os.path.exists(dbg_dirname):
             os.makedirs(dbg_dirname, exist_ok=True)
 

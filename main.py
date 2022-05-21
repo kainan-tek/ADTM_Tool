@@ -22,28 +22,33 @@ class MainWindow(QMainWindow):
         self.init_var()
 
     def gui_setup(self):
-        self.setWindowTitle(f'{gl.Gui_Info["proj"]} {gl.Gui_Info["version"]}')
+        self.setWindowTitle(f'{gl.GuiInfo["proj"]} {gl.GuiInfo["version"]}')
         adtm_icon = QIcon(QPixmap(":/icon/adtm_icon"))
         self.setWindowIcon(adtm_icon)
-        self.dialog = QFileDialog()
-        self.msgbox = QMessageBox()
-        self.ui.periodEdit.setText("8")
-        self.ui.bufferEdit.setText("24")
+        self.ui.periodLineEdit.setText("8")
+        self.ui.bufferLineEdit.setText("24")
+        self.ui.guideTextEdit.setStyleSheet(u"background-color: rgb(231, 234, 237);")
         self.ui.selectButton.clicked.connect(self.call_select_bt)
         self.ui.drawButton.clicked.connect(self.call_draw_bt)
         self.ui.actionExit.triggered.connect(self.action_exit)
-        self.ui.actionOpen_Log.triggered.connect(self.action_open_log)
+        self.ui.actionOpenLog.triggered.connect(self.action_open_log)
         self.ui.actionAbout.triggered.connect(self.action_about)
-        # self.ui.comboBox.setStyleSheet("border-width:1;border-style:outset")
 
     def init_var(self):
         self.draw_dict = {}
-        self.gl_bg = "#e7eaed"
+        self.dialog = QFileDialog()
+        self.msgbox = QMessageBox()
         self.key_words = ["inverval_max", "interval_min", "inverval_mean"]
         # self.min_pattern = re.compile(r"interval_min:(\d+) ms")      # interval_min:0 ms
         # self.mean_pattern = re.compile(r"inverval_mean:(\d+) ms")    # inverval_mean:8 ms
         self.max_pattern = re.compile(r"inverval_max:(\d+) ms")        # inverval_max:11 ms
         self.alsanode_pattern = re.compile(r"alsa node\((.*)\) adtm")  # alsa node(pcmMicRefIn_c) adtm
+        self.insert_guide_text()
+
+    def insert_guide_text(self):
+        self.ui.guideTextEdit.setReadOnly(False)
+        self.ui.guideTextEdit.setText(gl.GuideTips)
+        self.ui.guideTextEdit.setReadOnly(True)
 
     def call_select_bt(self):
         all_log_list = []
@@ -55,7 +60,7 @@ class MainWindow(QMainWindow):
             return False
         file_name = self.dialog.selectedFiles()[0]
         self.log.info(f"Log file: {file_name}")
-        self.ui.logEdit.setText(file_name)
+        self.ui.logLineEdit.setText(file_name)
         self.ui.comboBox.clear()
 
         try:
@@ -81,9 +86,9 @@ class MainWindow(QMainWindow):
 
     def call_draw_bt(self):
         msgtext = ""
-        log_file = self.ui.logEdit.text().strip()
-        period_time = self.ui.periodEdit.text().strip()
-        buffer_time = self.ui.bufferEdit.text().strip()
+        log_file = self.ui.logLineEdit.text().strip()
+        period_time = self.ui.periodLineEdit.text().strip()
+        buffer_time = self.ui.bufferLineEdit.text().strip()
         alsa_node = self.ui.comboBox.currentText().strip()
 
         if not os.path.exists(log_file):
@@ -164,16 +169,16 @@ class MainWindow(QMainWindow):
 
     def action_open_log(self):
         if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(gl.Gui_Info["win_tmp"], gl.Gui_Info["dbg_reldir"]))
+            dbg_dirname = os.path.normpath(os.path.join(gl.GuiInfo["win_tmp"], gl.GuiInfo["dbg_reldir"]))
             # subprocess.Popen(f'explorer.exe {dbg_dirname}', close_fds=True)
             os.startfile(dbg_dirname)
         else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.Gui_Info["dbg_reldir"])
+            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.GuiInfo["dbg_reldir"])
             # subprocess.Popen(f'xdg-open {dbg_dirname}', close_fds=True)
             os.system(f'xdg-open {dbg_dirname}')
 
     def action_about(self):
-        self.msgbox.information(self, "About", gl.About_Info)
+        self.msgbox.information(self, "About", gl.AboutInfo)
 
 
 if __name__ == "__main__":

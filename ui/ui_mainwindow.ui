@@ -93,7 +93,7 @@
        <string>Log File</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="logEdit">
+     <widget class="QLineEdit" name="logLineEdit">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -166,7 +166,7 @@
        <string>Period Time</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="periodEdit">
+     <widget class="QLineEdit" name="periodLineEdit">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -204,7 +204,7 @@
        <string>Buffer Time</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="bufferEdit">
+     <widget class="QLineEdit" name="bufferLineEdit">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -282,6 +282,31 @@
      <attribute name="title">
       <string>User Guide</string>
      </attribute>
+     <widget class="QTextEdit" name="guideTextEdit">
+      <property name="geometry">
+       <rect>
+        <x>3</x>
+        <y>0</y>
+        <width>511</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -304,7 +329,7 @@
     <property name="title">
      <string>Logging</string>
     </property>
-    <addaction name="actionOpen_Log"/>
+    <addaction name="actionOpenLog"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -317,7 +342,7 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionOpen_Log">
+  <action name="actionOpenLog">
    <property name="text">
     <string>Open Log</string>
    </property>
