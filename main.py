@@ -8,6 +8,7 @@ import resrc.resource as res
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PySide6.QtGui import QIcon, QPixmap
 from ui.ui_mainwindow import Ui_MainWindow
+from user_guide import UserGuide
 from plotly.offline import plot
 from plotly import graph_objects as go
 
@@ -18,6 +19,7 @@ class MainWindow(QMainWindow):
         self.log = log
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.uguide = UserGuide()
         self.gui_setup()
         self.init_var()
 
@@ -32,6 +34,7 @@ class MainWindow(QMainWindow):
         self.ui.drawButton.clicked.connect(self.call_draw_bt)
         self.ui.actionExit.triggered.connect(self.action_exit)
         self.ui.actionOpenLog.triggered.connect(self.action_open_log)
+        self.ui.actionUserGuide.triggered.connect(self.action_user_guide)
         self.ui.actionAbout.triggered.connect(self.action_about)
 
     def init_var(self):
@@ -179,6 +182,9 @@ class MainWindow(QMainWindow):
 
     def action_about(self):
         self.msgbox.information(self, "About", gl.AboutInfo)
+
+    def action_user_guide(self):
+        self.uguide.show()
 
 
 if __name__ == "__main__":
