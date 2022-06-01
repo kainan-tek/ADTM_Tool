@@ -21,19 +21,25 @@ class Ui_UserGuide(object):
     def setupUi(self, UserGuide):
         if not UserGuide.objectName():
             UserGuide.setObjectName(u"UserGuide")
-        UserGuide.resize(361, 151)
+        UserGuide.resize(381, 151)
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(UserGuide.sizePolicy().hasHeightForWidth())
         UserGuide.setSizePolicy(sizePolicy)
-        self.textEdit = QTextEdit(UserGuide)
-        self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setGeometry(QRect(0, 0, 361, 151))
-        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
-        self.textEdit.setSizePolicy(sizePolicy)
-        self.textEdit.setStyleSheet(u"background-color: rgb(231, 234, 237);")
-        self.textEdit.setReadOnly(True)
+        UserGuide.setMinimumSize(QSize(381, 151))
+        UserGuide.setMaximumSize(QSize(381, 151))
+        font = QFont()
+        font.setPointSize(10)
+        UserGuide.setFont(font)
+        self.guideTextEdit = QTextEdit(UserGuide)
+        self.guideTextEdit.setObjectName(u"guideTextEdit")
+        self.guideTextEdit.setGeometry(QRect(0, 0, 381, 151))
+        sizePolicy.setHeightForWidth(self.guideTextEdit.sizePolicy().hasHeightForWidth())
+        self.guideTextEdit.setSizePolicy(sizePolicy)
+        self.guideTextEdit.setFont(font)
+        self.guideTextEdit.setStyleSheet(u"background-color: rgb(231, 234, 237);")
+        self.guideTextEdit.setReadOnly(True)
 
         self.retranslateUi(UserGuide)
 
@@ -42,18 +48,5 @@ class Ui_UserGuide(object):
 
     def retranslateUi(self, UserGuide):
         UserGuide.setWindowTitle(QCoreApplication.translate("UserGuide", u"User Guide", None))
-        self.textEdit.setHtml(QCoreApplication.translate("UserGuide", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">Tips:</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">      1. Select the log file which includes the ADTM log.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empt"
-                        "y; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">      2. Change the period time or buffer time if needed.</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:10pt;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:10pt;\">      3. Select the alsa node and click the draw button.</span></p></body></html>", None))
     # retranslateUi
 

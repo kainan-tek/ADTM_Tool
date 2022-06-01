@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
-    <height>280</height>
+    <width>511</width>
+    <height>271</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,14 +24,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>520</width>
-    <height>280</height>
+    <width>511</width>
+    <height>271</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>520</width>
-    <height>280</height>
+    <width>511</width>
+    <height>271</height>
    </size>
   </property>
   <property name="font">
@@ -55,10 +55,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>2</x>
       <y>0</y>
-      <width>521</width>
-      <height>241</height>
+      <width>507</width>
+      <height>227</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -303,10 +303,10 @@
      <widget class="QTextEdit" name="guideTextEdit">
       <property name="geometry">
        <rect>
-        <x>3</x>
+        <x>0</x>
         <y>0</y>
-        <width>511</width>
-        <height>211</height>
+        <width>505</width>
+        <height>203</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -339,7 +339,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>520</width>
+     <width>511</width>
      <height>23</height>
     </rect>
    </property>
