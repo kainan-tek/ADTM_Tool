@@ -20,10 +20,20 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.uguide = UserGuide()
-        self.gui_setup()
         self.init_var()
+        self.init_gui()
 
-    def gui_setup(self):
+    def init_var(self):
+        self.draw_dict = {}
+        self.dialog = QFileDialog()
+        self.msgbox = QMessageBox()
+        self.key_words = ["inverval_max", "interval_min", "inverval_mean"]
+        # self.min_pattern = re.compile(r"interval_min:(\d+) ms")      # interval_min:0 ms
+        # self.mean_pattern = re.compile(r"inverval_mean:(\d+) ms")    # inverval_mean:8 ms
+        self.max_pattern = re.compile(r"inverval_max:(\d+) ms")        # inverval_max:11 ms
+        self.alsanode_pattern = re.compile(r"alsa node\((.*)\) adtm")  # alsa node(pcmMicRefIn_c) adtm
+
+    def init_gui(self):
         self.setWindowTitle(f'{gl.GuiInfo["proj"]} {gl.GuiInfo["version"]}')
         adtm_icon = QIcon(QPixmap(":/icon/adtm_icon"))
         self.setWindowIcon(adtm_icon)
@@ -37,18 +47,6 @@ class MainWindow(QMainWindow):
         self.ui.actionUserGuide.triggered.connect(self.action_user_guide)
         self.ui.actionAbout.triggered.connect(self.action_about)
 
-    def init_var(self):
-        self.draw_dict = {}
-        self.dialog = QFileDialog()
-        self.msgbox = QMessageBox()
-        self.key_words = ["inverval_max", "interval_min", "inverval_mean"]
-        # self.min_pattern = re.compile(r"interval_min:(\d+) ms")      # interval_min:0 ms
-        # self.mean_pattern = re.compile(r"inverval_mean:(\d+) ms")    # inverval_mean:8 ms
-        self.max_pattern = re.compile(r"inverval_max:(\d+) ms")        # inverval_max:11 ms
-        self.alsanode_pattern = re.compile(r"alsa node\((.*)\) adtm")  # alsa node(pcmMicRefIn_c) adtm
-        self.insert_guide_text()
-
-    def insert_guide_text(self):
         self.ui.guideTextEdit.setReadOnly(False)
         self.ui.guideTextEdit.setText(gl.GuideTips)
         self.ui.guideTextEdit.setReadOnly(True)
@@ -70,7 +68,7 @@ class MainWindow(QMainWindow):
             with open(file_name, mode='r', encoding="utf-8", errors="ignore") as fp:
                 all_log_list = fp.readlines()
         except Exception as e:
-            msgtext = "'Error of opening log file"
+            msgtext = "Error of opening log file"
             self.log.error(f'{msgtext}: {e}')
             self.msgbox.critical(self, "Error", msgtext)  # warning, information, about, question
             return False
