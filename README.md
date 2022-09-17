@@ -20,7 +20,7 @@ pip install requirements.txt
 
 ## Pack with pyinstaller
 ```C
-pyinstaller --onefile --noconsole --clean -i ./resrc/icon/pycom.ico main.py
+pyinstaller --onefile --noconsole --clean -i ./resrc/icon/adtm.ico main.py
 // or
 pyinstaller --clean main.spec
 ```
