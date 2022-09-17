@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/icon">
-        <file alias="adtm_icon">icon/adtm.png</file>
+        <file alias="adtm_icon">icon/adtm.ico</file>
     </qresource>
 </RCC>

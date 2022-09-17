@@ -2,21 +2,21 @@ import os
 import sys
 import re
 import threading
-from log import Log
-import global_var as gl
-import resrc.resource as res
+import logwrapper
+import globalvar as gl
+import resrc.rc_resource as res
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from PySide6.QtGui import QIcon, QPixmap
+from PySide6.QtGui import QIcon, QPixmap, QIntValidator
 from ui.ui_mainwindow import Ui_MainWindow
-from user_guide import UserGuide
+from guide import UserGuide
 from plotly.offline import plot
 from plotly import graph_objects as go
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, log):
+    def __init__(self):
         super(MainWindow, self).__init__()
-        self.log = log
+        self.log = logwrapper.log_instance
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.uguide = UserGuide()
@@ -47,6 +47,8 @@ class MainWindow(QMainWindow):
         self.ui.actionUserGuide.triggered.connect(self.action_user_guide)
         self.ui.actionAbout.triggered.connect(self.action_about)
 
+        self.ui.periodLineEdit.setValidator(QIntValidator())
+        self.ui.bufferLineEdit.setValidator(QIntValidator())
         self.ui.guideTextEdit.setReadOnly(False)
         self.ui.guideTextEdit.setText(gl.GuideTips)
         self.ui.guideTextEdit.setReadOnly(True)
@@ -152,17 +154,24 @@ class MainWindow(QMainWindow):
         data_dict["y2"] = [self.draw_dict["buffer_time"]] * len(actual_time_list)
         data_dict["y3"] = actual_time_list
 
+        fig = go.Figure()
         trace_period = go.Scatter(x=data_dict["x"], y=data_dict["y1"], name="period_time",
                                   mode="markers+lines", line=dict(color="green"))
         trace_buffer = go.Scatter(x=data_dict["x"], y=data_dict["y2"], name="buffer_time",
                                   mode="markers+lines", line=dict(color="red"))
         trace_actual = go.Scatter(x=data_dict["x"], y=data_dict["y3"], name="actual_time",
                                   mode="markers+lines", line=dict(color="blue"))
-        _data = [trace_period, trace_actual, trace_buffer]
-        _layout = go.Layout(title=self.draw_dict["alsa_node"], xaxis=dict(
-            title='unit: second'), yaxis=dict(title='unit: ms'), legend=dict(font_size=16))
+        fig.add_trace(trace_period)
+        fig.add_trace(trace_actual)
+        fig.add_trace(trace_buffer)
 
-        fig = go.Figure(data=_data, layout=_layout)
+        fig.update_layout(title=self.draw_dict["alsa_node"],
+                          xaxis_title='unit: second', yaxis_title='unit: ms', legend_font_size=16)
+        # _data = [trace_period, trace_actual, trace_buffer]
+        # _layout = go.Layout(title=self.draw_dict["alsa_node"], xaxis=dict(
+        #     title='unit: second'), yaxis=dict(title='unit: ms'), legend=dict(font_size=16))
+        # fig = go.Figure(data=_data, layout=_layout)
+
         plot(fig, filename=f'adtm_test_{self.draw_dict["alsa_node"]}.html')
 
     def action_exit(self):
@@ -170,11 +179,12 @@ class MainWindow(QMainWindow):
 
     def action_open_log(self):
         if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(gl.GuiInfo["win_tmp"], gl.GuiInfo["dbg_reldir"]))
+            dbg_dirname = os.path.normpath(os.path.join(
+                logwrapper.LogInfo["win_tmp"], logwrapper.LogInfo["dbg_reldir"]))
             # subprocess.Popen(f'explorer.exe {dbg_dirname}', close_fds=True)
             os.startfile(dbg_dirname)
         else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), gl.GuiInfo["dbg_reldir"])
+            dbg_dirname = os.path.join(os.path.expanduser('~'), logwrapper.LogInfo["dbg_reldir"])
             # subprocess.Popen(f'xdg-open {dbg_dirname}', close_fds=True)
             os.system(f'xdg-open {dbg_dirname}')
 
@@ -186,8 +196,7 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    log = Log()
     app = QApplication(sys.argv)
-    window = MainWindow(log)
+    window = MainWindow()
     window.show()
     sys.exit(app.exec())

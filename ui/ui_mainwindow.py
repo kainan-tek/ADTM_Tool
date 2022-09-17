@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwindow.ui'
+## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.0
+## Created by: Qt User Interface Compiler version 6.3.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -54,6 +54,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
         self.centralwidget.setSizePolicy(sizePolicy)
+        self.centralwidget.setAutoFillBackground(True)
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
         self.tabWidget.setEnabled(True)
@@ -64,12 +65,14 @@ class Ui_MainWindow(object):
         font1.setPointSize(10)
         font1.setBold(True)
         self.tabWidget.setFont(font1)
+        self.tabWidget.setAutoFillBackground(True)
         self.MainTab = QWidget()
         self.MainTab.setObjectName(u"MainTab")
         font2 = QFont()
         font2.setPointSize(10)
         font2.setBold(False)
         self.MainTab.setFont(font2)
+        self.MainTab.setAutoFillBackground(True)
         self.label = QLabel(self.MainTab)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(10, 20, 51, 31))
@@ -79,6 +82,7 @@ class Ui_MainWindow(object):
         self.logLineEdit.setEnabled(True)
         self.logLineEdit.setGeometry(QRect(70, 20, 331, 31))
         self.logLineEdit.setFont(font2)
+        self.logLineEdit.setStyleSheet(u"")
         self.logLineEdit.setReadOnly(True)
         self.selectButton = QPushButton(self.MainTab)
         self.selectButton.setObjectName(u"selectButton")
@@ -97,6 +101,8 @@ class Ui_MainWindow(object):
         self.periodLineEdit.setObjectName(u"periodLineEdit")
         self.periodLineEdit.setGeometry(QRect(100, 100, 121, 31))
         self.periodLineEdit.setFont(font2)
+        self.periodLineEdit.setStyleSheet(u"")
+        self.periodLineEdit.setFrame(True)
         self.periodLineEdit.setCursorMoveStyle(Qt.LogicalMoveStyle)
         self.label_3 = QLabel(self.MainTab)
         self.label_3.setObjectName(u"label_3")
@@ -106,6 +112,7 @@ class Ui_MainWindow(object):
         self.bufferLineEdit.setObjectName(u"bufferLineEdit")
         self.bufferLineEdit.setGeometry(QRect(370, 100, 121, 31))
         self.bufferLineEdit.setFont(font2)
+        self.bufferLineEdit.setStyleSheet(u"border-color: rgb(0, 0, 255);")
         self.label_4 = QLabel(self.MainTab)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(10, 160, 71, 31))
@@ -119,11 +126,13 @@ class Ui_MainWindow(object):
         self.comboBox.setEnabled(True)
         self.comboBox.setGeometry(QRect(90, 160, 311, 31))
         self.comboBox.setFont(font2)
+        self.comboBox.setFrame(True)
         self.tabWidget.addTab(self.MainTab, "")
         self.UserGuideTab = QWidget()
         self.UserGuideTab.setObjectName(u"UserGuideTab")
         sizePolicy.setHeightForWidth(self.UserGuideTab.sizePolicy().hasHeightForWidth())
         self.UserGuideTab.setSizePolicy(sizePolicy)
+        self.UserGuideTab.setAutoFillBackground(True)
         self.guideTextEdit = QTextEdit(self.UserGuideTab)
         self.guideTextEdit.setObjectName(u"guideTextEdit")
         self.guideTextEdit.setGeometry(QRect(0, 0, 505, 203))

@@ -1,5 +1,8 @@
 Release Note:
 
+v1.1.1:
+    some minor changes.
+
 v1.1.0:
     Based on pyside6 v6.3.0.
 
