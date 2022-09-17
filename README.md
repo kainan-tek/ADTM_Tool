@@ -4,7 +4,7 @@
 ## Dependencies:
 python v3.10.7  
 pyside6==6.3.2  
-plotly==5.10.0 
+plotly==5.10.0  
 pyinstaller==5.4.1 (optional)  
 notice: pyinstaller is used for packing the python script file(\*.py) to executable file(\*.exe).  
 
