@@ -1,16 +1,19 @@
 import os
-import sys
 import re
+import sys
 import threading
-import logwrapper
-import globalvar as gl
-import resrc.rc_resource as res
-from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
-from PySide6.QtGui import QIcon, QPixmap, QIntValidator
-from ui.ui_mainwindow import Ui_MainWindow
-from guide import UserGuide
-from plotly.offline import plot
+
 from plotly import graph_objects as go
+from plotly.offline import plot
+from PySide6.QtGui import QIcon, QIntValidator, QPixmap
+from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow,
+                               QMessageBox)
+
+import globalvar as gl
+import logwrapper
+import resrc.rc_resource as res
+from guide import UserGuide
+from ui.ui_mainwindow import Ui_MainWindow
 
 
 class MainWindow(QMainWindow):

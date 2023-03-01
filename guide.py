@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import QWidget
-from ui.ui_guide import Ui_UserGuide
+
 import globalvar as gl
+from ui.ui_guide import Ui_UserGuide
 
 
 class UserGuide(QWidget):

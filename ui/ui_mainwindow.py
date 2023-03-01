@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'mainwindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.4.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -75,7 +75,7 @@ class Ui_MainWindow(object):
         self.MainTab.setAutoFillBackground(True)
         self.label = QLabel(self.MainTab)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(10, 20, 51, 31))
+        self.label.setGeometry(QRect(10, 20, 56, 31))
         self.label.setFont(font2)
         self.logLineEdit = QLineEdit(self.MainTab)
         self.logLineEdit.setObjectName(u"logLineEdit")

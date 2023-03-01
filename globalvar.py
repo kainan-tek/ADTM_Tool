@@ -1,6 +1,5 @@
 GuiInfo = {"proj": "ADTM Tool",
-           "version": " v1.1.2",
-           "email": "kainanos@outlook.com",
+           "version": " v1.1.1",
            "normal_size": [500, 250],
            "cwd": ""
            }
@@ -10,7 +9,8 @@ AboutInfo = f"""
     Project: {GuiInfo["proj"]}
     Version: {GuiInfo["version"]}
 
-    Support: {GuiInfo["email"]}
+    Support: kainanos@outlook.com
+    Github Repo: https://github.com/kainan-tek/ADTM_Tool
 
 """
 
