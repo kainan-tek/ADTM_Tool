@@ -11,9 +11,9 @@ from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow,
 
 import globalvar as gl
 import logwrapper
-import resrc.rc_resource as res
+import resrc.resource_rc as res
 from guide import UserGuide
-from ui.ui_mainwindow import Ui_MainWindow
+from ui.mainwindow_ui import Ui_MainWindow
 
 
 class MainWindow(QMainWindow):
