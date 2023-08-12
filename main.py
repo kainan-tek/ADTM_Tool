@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow,
 import globalvar as gl
 import resrc.resource_rc as res
 from guide import UserGuide
-from logwrapper import log_inst
+from logwrapper import LogInfo, log_inst
 from ui.mainwindow_ui import Ui_MainWindow
 
 
@@ -182,12 +182,11 @@ class MainWindow(QMainWindow):
 
     def action_open_log(self):
         if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(
-                logwrapper.LogInfo["win_tmp"], logwrapper.LogInfo["dbg_reldir"]))
+            dbg_dirname = os.path.normpath(os.path.join(LogInfo["win_tmp"], LogInfo["dbg_reldir"]))
             # subprocess.Popen(f'explorer.exe {dbg_dirname}', close_fds=True)
             os.startfile(dbg_dirname)
         else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), logwrapper.LogInfo["dbg_reldir"])
+            dbg_dirname = os.path.join(os.path.expanduser('~'), LogInfo["dbg_reldir"])
             # subprocess.Popen(f'xdg-open {dbg_dirname}', close_fds=True)
             os.system(f'xdg-open {dbg_dirname}')
 
