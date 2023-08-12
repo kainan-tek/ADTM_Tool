@@ -181,12 +181,11 @@ class MainWindow(QMainWindow):
         sys.exit()
 
     def action_open_log(self):
+        dbg_dirname = os.path.join(os.path.expanduser('~'), LogInfo["reldir"])
         if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(LogInfo["win_tmp"], LogInfo["dbg_reldir"]))
             # subprocess.Popen(f'explorer.exe {dbg_dirname}', close_fds=True)
             os.startfile(dbg_dirname)
         else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), LogInfo["dbg_reldir"])
             # subprocess.Popen(f'xdg-open {dbg_dirname}', close_fds=True)
             os.system(f'xdg-open {dbg_dirname}')
 
