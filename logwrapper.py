@@ -1,81 +1,44 @@
 import logging
 import os
-import time
+from logging.handlers import RotatingFileHandler
 
-LogInfo = {"win_tmp": "C:/temp",
-           "dbg_reldir": r"log/adtm/debug"
+LogInfo = {"reldir": "log/adtm",
+           "basename": "adtm.log",
+           "filesize": 48*1024*1024,
+           "fbkcount": 6
            }
 
 
 class Log:
     def __init__(self):
-        if "nt" in os.name:
-            dbg_dirname = os.path.normpath(os.path.join(LogInfo["win_tmp"], LogInfo["dbg_reldir"]))
-        else:
-            dbg_dirname = os.path.join(os.path.expanduser('~'), LogInfo["dbg_reldir"])
-        if not os.path.exists(dbg_dirname):
-            os.makedirs(dbg_dirname, exist_ok=True)
+        log_dirname = os.path.join(os.path.expanduser('~'), LogInfo["reldir"])
+        if not os.path.exists(log_dirname):
+            os.makedirs(log_dirname, exist_ok=True)
 
-        time_now = time.strftime("%Y-%m-%d--%H-%M-%S")
-        self.logname = os.path.normpath(os.path.join(dbg_dirname, f'{time_now}.log'))
+        # time_now = time.strftime("%Y-%m-%d--%H-%M-%S")
+        logname = os.path.normpath(os.path.join(log_dirname, LogInfo["basename"]))
+        formatter = logging.Formatter('%(asctime)s - %(filename)s:%(lineno)d - [%(levelname)s] - %(message)s')
 
-    def __printconsole(self, level, message):
-        # 创建一个logger
-        logger = logging.getLogger()
-        logger.setLevel(logging.DEBUG)
+        self.logger = logging.getLogger()
+        self.logger.setLevel(logging.DEBUG)
 
-        # 创建一个handler，用于写入日志文件
-        fh = logging.FileHandler(self.logname, 'a', encoding='utf-8')
-        # fh = logging.handlers.TimedRotatingFileHandler(
-        #     filename=self.logname, when='D', interval=1, backupCount=10, encoding='utf-8')
-        # fh.suffix = "%Y%m%d-%H%M.log"
-        fh.setLevel(logging.DEBUG)
-
-        # 再创建一个handler，用于输出到控制台
         ch = logging.StreamHandler()
-        ch.setLevel(logging.DEBUG)
-
-        # 定义handler的输出格式
-        formatter = logging.Formatter('[%(asctime)s] - %(filename)s [Line:%(lineno)d] - [%(levelname)s] - %(message)s')
-        fh.setFormatter(formatter)
+        # fh = logging.FileHandler(logname, 'a', encoding='utf-8')
+        rfh = RotatingFileHandler(filename=logname, mode='a',
+                                  maxBytes=LogInfo["filesize"], backupCount=LogInfo["fbkcount"], encoding='utf-8')
+        # fh = logging.handlers.TimedRotatingFileHandler(
+        #     filename=logname, when='D', interval=1, backupCount=10, encoding='utf-8')
+        # fh.suffix = "%Y%m%d-%H%M.log"
+        ch.setLevel(logging.INFO)
+        rfh.setLevel(logging.INFO)
         ch.setFormatter(formatter)
+        rfh.setFormatter(formatter)
 
-        # 给logger添加handler
-        logger.addHandler(fh)
-        logger.addHandler(ch)
-
-        # 记录一条日志
-        if level == 'info':
-            logger.info(message)
-        elif level == 'debug':
-            logger.debug(message)
-        elif level == 'warning':
-            logger.warning(message)
-        elif level == 'error':
-            logger.error(message)
-
-        # 记录完日志移除句柄Handler
-        logger.removeHandler(ch)
-        logger.removeHandler(fh)
-
-        # 关闭打开的文件
-        fh.close()
-
-    def debug(self, message):
-        self.__printconsole('debug', message)
-
-    def info(self, message):
-        self.__printconsole('info', message)
-
-    def warning(self, message):
-        self.__printconsole('warning', message)
-
-    def error(self, message):
-        self.__printconsole('error', message)
+        self.logger.addHandler(ch)
+        self.logger.addHandler(rfh)
 
 
-log_instance = Log()
+log_inst = Log()
 
 if __name__ == "__main__":
-    log = Log()
-    log.info("test")
+    log_inst.logger.info("test")

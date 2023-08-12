@@ -1,5 +1,5 @@
 GuiInfo = {"proj": "ADTM Tool",
-           "version": " v1.1.1",
+           "version": " v1.1.2",
            "normal_size": [500, 250],
            "cwd": ""
            }

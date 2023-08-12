@@ -10,16 +10,16 @@ from PySide6.QtWidgets import (QApplication, QFileDialog, QMainWindow,
                                QMessageBox)
 
 import globalvar as gl
-import logwrapper
 import resrc.resource_rc as res
 from guide import UserGuide
+from logwrapper import log_inst
 from ui.mainwindow_ui import Ui_MainWindow
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-        self.log = logwrapper.log_instance
+        self.log = log_inst.logger
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.uguide = UserGuide()

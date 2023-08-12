@@ -9,9 +9,9 @@ notice: pyinstaller is used for packing the python script file(\*.py) to executa
 ## Dependencies install cmd:
 ```C
 // install package with specified tsinghua source path
-pip install pyside6==6.5.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install plotly==5.14.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install pyinstaller==5.11.0 -i https://pypi.tuna.tsinghua.edu.cn/simple  (optional)
+pip install pyside6==6.5.2 -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install plotly==5.16.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pyinstaller==5.13.0 -i https://pypi.tuna.tsinghua.edu.cn/simple  (optional)
 // or install all 
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
