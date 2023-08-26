@@ -100,7 +100,7 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>56</width>
+        <width>31</width>
         <height>31</height>
        </rect>
       </property>
@@ -111,7 +111,7 @@
        </font>
       </property>
       <property name="text">
-       <string>Log File</string>
+       <string>File:</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="logLineEdit">
@@ -120,9 +120,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>40</x>
         <y>20</y>
-        <width>331</width>
+        <width>366</width>
         <height>31</height>
        </rect>
       </property>
@@ -374,13 +374,9 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionOpen_Log"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
-   </widget>
-   <widget class="QMenu" name="menuLogging">
-    <property name="title">
-     <string>Logging</string>
-    </property>
-    <addaction name="actionOpenLog"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -390,20 +386,9 @@
     <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuLogging"/>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionOpenLog">
-   <property name="text">
-    <string>Open Log</string>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-  </action>
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
@@ -432,6 +417,11 @@
     <font>
      <pointsize>10</pointsize>
     </font>
+   </property>
+  </action>
+  <action name="actionOpen_Log">
+   <property name="text">
+    <string>Open Log</string>
    </property>
   </action>
  </widget>

@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.ui.selectButton.clicked.connect(self.call_select_bt)
         self.ui.drawButton.clicked.connect(self.call_draw_bt)
         self.ui.actionExit.triggered.connect(self.action_exit)
-        self.ui.actionOpenLog.triggered.connect(self.action_open_log)
+        self.ui.actionOpen_Log.triggered.connect(self.action_open_log)
         self.ui.actionUserGuide.triggered.connect(self.action_user_guide)
         self.ui.actionAbout.triggered.connect(self.action_about)
 
@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
                 all_log_list = fp.readlines()
         except Exception as e:
             msgtext = "Error of opening log file"
-            self.log.critical(f'{msgtext}: {e}')
+            self.log.error(f'{msgtext}: {e}')
             self.msgbox.critical(self, "Error", msgtext)  # warning, information, about, question
             return False
 
