@@ -6,6 +6,8 @@ __pycache__/
 # user define
 *.vscode
 *.docx
+*.build
+*.dist
 
 # C extensions
 *.so

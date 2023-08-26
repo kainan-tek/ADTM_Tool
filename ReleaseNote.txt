@@ -1,5 +1,6 @@
 Release Note:
 v1.1.2:
+    change main.py to adtm.py.
     fix log print issue.
 
 v1.1.1:
