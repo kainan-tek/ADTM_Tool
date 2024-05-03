@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'guide.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.5.2
+## Created by: Qt User Interface Compiler version 6.7.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -15,14 +15,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QSizePolicy, QTextEdit, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QSizePolicy, QTextEdit,
+    QWidget)
 
 class Ui_UserGuide(object):
     def setupUi(self, UserGuide):
         if not UserGuide.objectName():
             UserGuide.setObjectName(u"UserGuide")
         UserGuide.resize(381, 151)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(UserGuide.sizePolicy().hasHeightForWidth())
@@ -39,6 +40,7 @@ class Ui_UserGuide(object):
         self.guideTextEdit.setSizePolicy(sizePolicy)
         self.guideTextEdit.setFont(font)
         self.guideTextEdit.setStyleSheet(u"background-color: rgb(231, 234, 237);")
+        self.guideTextEdit.setFrameShape(QFrame.Shape.Panel)
         self.guideTextEdit.setReadOnly(True)
 
         self.retranslateUi(UserGuide)

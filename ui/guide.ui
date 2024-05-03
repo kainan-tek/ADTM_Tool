@@ -59,6 +59,9 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(231, 234, 237);</string>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::Panel</enum>
+   </property>
    <property name="readOnly">
     <bool>true</bool>
    </property>

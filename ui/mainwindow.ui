@@ -3,7 +3,7 @@
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::WindowModality::WindowModal</enum>
   </property>
   <property name="enabled">
    <bool>true</bool>
@@ -61,7 +61,7 @@
       <x>2</x>
       <y>0</y>
       <width>507</width>
-      <height>227</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -81,6 +81,9 @@
     </property>
     <property name="currentIndex">
      <number>0</number>
+    </property>
+    <property name="elideMode">
+     <enum>Qt::TextElideMode::ElideNone</enum>
     </property>
     <widget class="QWidget" name="MainTab">
      <property name="font">
@@ -168,7 +171,7 @@
        </rect>
       </property>
       <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+       <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
@@ -212,7 +215,7 @@
        <bool>true</bool>
       </property>
       <property name="cursorMoveStyle">
-       <enum>Qt::LogicalMoveStyle</enum>
+       <enum>Qt::CursorMoveStyle::LogicalMoveStyle</enum>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">
@@ -257,7 +260,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>160</y>
+        <y>150</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -276,7 +279,7 @@
       <property name="geometry">
        <rect>
         <x>420</x>
-        <y>160</y>
+        <y>150</y>
         <width>71</width>
         <height>31</height>
        </rect>
@@ -287,8 +290,14 @@
         <bold>false</bold>
        </font>
       </property>
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::StrongFocus</enum>
+      </property>
       <property name="text">
        <string>Draw</string>
+      </property>
+      <property name="autoDefault">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QComboBox" name="comboBox">
@@ -298,7 +307,7 @@
       <property name="geometry">
        <rect>
         <x>90</x>
-        <y>160</y>
+        <y>150</y>
         <width>311</width>
         <height>31</height>
        </rect>
@@ -333,7 +342,7 @@
         <x>0</x>
         <y>0</y>
         <width>505</width>
-        <height>203</height>
+        <height>191</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -351,8 +360,11 @@
       <property name="styleSheet">
        <string notr="true"/>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::Panel</enum>
+      </property>
       <property name="frameShadow">
-       <enum>QFrame::Sunken</enum>
+       <enum>QFrame::Shadow::Sunken</enum>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -367,7 +379,7 @@
      <x>0</x>
      <y>0</y>
      <width>511</width>
-     <height>23</height>
+     <height>33</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
