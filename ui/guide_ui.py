@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'guide.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.7.0
+## Created by: Qt User Interface Compiler version 6.9.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -17,6 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QSizePolicy, QTextEdit,
     QWidget)
+import resrc.resource_rc
 
 class Ui_UserGuide(object):
     def setupUi(self, UserGuide):

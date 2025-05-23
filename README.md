@@ -1,26 +1,21 @@
 # ADTM_Tool
 ***A Python GUI tool to test ADTM.***   
 
-## Dependencies:
+## Steps to run the tool
 ```C
-python v3.11.9
-pyside6
-plotly
+// install uv tool in windows powershell:
+irm https://astral.sh/uv/install.ps1 | iex
+// set up environment with below cmd on ADTM_Tool path:
+uv sync
+// run the python file
+uv run python main.py
 ```
 
-## Dependencies install cmd:
-```C
-// install package with specified tsinghua source path
-pip install pyside6==6.7.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install plotly==5.22.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
-// or install all 
-pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-```
-
-## Pack with pyinstaller
+## Package into ADTM.exe with pyinstaller
 ```C
 // install pyinstaller  
-pip install pyinstaller==6.6.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
+uv pip install pyinstaller
 // generate exe
-pyinstaller --onefile --noconsole --clean -i ./resrc/icon/adtm.ico adtm.py
+pyinstaller -D -w --clean --add-data "data/*:data" -i ./resrc/icon/adtm.ico main.py -n ADTM
+// run the executable file: ADTM.exe
 ```
